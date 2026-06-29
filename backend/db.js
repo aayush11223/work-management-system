@@ -1,0 +1,13 @@
+import { PrismaClient } from "@prisma/client";
+import { PrismaPg } from "@prisma/adapter-pg";
+// require("dotenv").config();
+import "dotenv/config"
+
+// Initialize using the PrismaPg adapter instead of datasources object
+const prisma = new PrismaClient({
+    adapter: new PrismaPg({
+        connectionString: process.env.DATABASE_URL
+    }),
+});
+
+export default prisma;
